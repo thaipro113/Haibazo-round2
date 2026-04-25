@@ -9,7 +9,7 @@ const ReviewCreate = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/books/all')
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/books/all`)
       .then(res => res.json())
       .then(data => setBooks(data))
       .catch(err => console.error(err));
@@ -26,7 +26,7 @@ const ReviewCreate = () => {
       return;
     }
     
-    fetch('http://localhost:8080/api/reviews', {
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/reviews`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content, bookId: Number(bookId) })

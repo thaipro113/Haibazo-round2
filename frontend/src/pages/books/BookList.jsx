@@ -6,7 +6,7 @@ const BookList = () => {
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/books?page=${page}&size=5`)
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/books?page=${page}&size=5`)
       .then(res => res.json())
       .then(data => {
         setBooks(data.content || []);

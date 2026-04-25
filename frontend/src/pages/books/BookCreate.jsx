@@ -9,7 +9,7 @@ const BookCreate = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/authors/all')
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/authors/all`)
       .then(res => res.json())
       .then(data => setAuthors(data))
       .catch(err => console.error(err));
@@ -26,7 +26,7 @@ const BookCreate = () => {
       return;
     }
     
-    fetch('http://localhost:8080/api/books', {
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/books`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, authorId: Number(authorId) })

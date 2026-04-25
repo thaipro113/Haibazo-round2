@@ -13,7 +13,7 @@ const AuthorCreate = () => {
       return;
     }
     
-    fetch('http://localhost:8080/api/authors', {
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/authors`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name })
