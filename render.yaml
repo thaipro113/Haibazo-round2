@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: haibazo-round2-backend
+    env: docker
+    plan: free
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: book_review_db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: book_review_db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: book_review_db
+          property: password
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: update
+databases:
+  - name: book_review_db
+    databaseName: book_review
+    user: book_admin
+    plan: free

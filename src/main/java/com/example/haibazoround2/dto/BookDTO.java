@@ -1,0 +1,10 @@
+package com.example.haibazoround2.dto;
+
+import lombok.Data;
+
+@Data
+public class BookDTO {
+    private Long id;
+    private String title;
+    private String authorName;
+}
